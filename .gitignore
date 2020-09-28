@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # remove refs
-./refs
-./mins
-./truths
-./size_exp
+refs
+mins
+truths
+size_exp
