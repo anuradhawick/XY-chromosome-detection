@@ -1,0 +1,5 @@
+for i in `find /g/data1a/te53/kccg_illumina_hiseqx10_wgs/* -type f -name "*_R1.fastq.gz"`; 
+do 
+gunzip -c $i | head -n40000000 >tmp.fq; 
+./assign ./uniqmins tmp.fq | perl -lne '$lcount++; $index = int($lcount/25000)*25000; if (exists $c{$index}{$_}) { $c{$index}{$_}++ } else { $c{$index}{$_} = $c{$index - 25000}{$_} + 1 } ; END { foreach $i (sort {$a<=>$b} keys %c ) { map { print "$i\t$_\t$c{$i}{$_}" } sort keys %{$c{$i}} }}' > `basename $i _R1.fastq.gz`.minimizercounts.txt; 
+done
