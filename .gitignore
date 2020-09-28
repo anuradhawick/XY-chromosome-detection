@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# remove refs
+./refs
+./mins
+./truths
+./size_exp
